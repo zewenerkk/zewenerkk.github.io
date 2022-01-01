@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Aktuelles Konzert</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Zewener Kammerkonzerte</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="recent_concert.html">Virtuell 2022</a>
+</li>
+<li>
+  <a href="concerts.html">Konzertarchiv</a>
+</li>
+<li>
+  <a href="membership.html">Mitglied werden</a>
+</li>
+<li>
+  <a href="impressum.html">Impressum</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Aktuelles Konzert</h1>
+
+</div>
+
+
+<div id="virtuelles-konzert---kammermusik-zum-neuen-jahr-2022" class="section level3">
+<h3>Virtuelles Konzert - Kammermusik zum neuen Jahr 2022</h3>
+<p><a href="https://zewenerkk.github.io/docs/Programm_21_22.pdf">Programm als PDF</a></p>
+<iframe width="400" height="225" src="https://www.youtube.com/embed/JluWPYqUaWk" frameborder="0" allowfullscreen>
+</iframe>
+<p>Um eine Spende wird freundlich gebeten:<br />
+Zewener Kammerkonzerte e.V.<br />
+DE72 5855 0130 0001 1023 59</p>
+<p>Im Zentrum unseres heutigen Konzerts steht das erste Lied aus Schuberts Liederzyklus „Winterreise“ mit dem Titel “Gute Nacht”. Der Protagonist verabschiedet sich darin heimlich von seiner Liebsten, bei der er den Sommer verbracht hatte und bricht zu seiner Wanderschaft auf. Die Winterreise erfreute sich damals wie heute gleichermaßen großer Beliebtheit und auch die Adaptionspraxis für andere Besetzungen war besonders beliebt. So stammt die Umsetzung für Flöte und Klavier von dem berühmten Flötenvirtuosen Theobald Böhm. Wir wollen noch einen Schritt weiter gehen und kombinieren bildgebende Kunst und Musik: Die einzelnen Strophen werden begleitet von Gemälden von 4 regionalen Künstlern. Daher gilt ein besondere Dank Suzanne Beaujean-Adam, Hilla Weidler, Horst Binsel und Werner Huwer. Ihre Bilder zu den einzelnen Strophen stehen ab sofort zum Verkauf und können per Email angefragt werden, wobei jeweils die erste Zuschrift berücksichtigt wird.<br />
+(Kontakt: <a href="mailto:email@zewener-kammerkonzerte.de" class="email">email@zewener-kammerkonzerte.de</a>)</p>
+<hr />
+</div>
+<div id="digitale-vernissage" class="section level3">
+<h3>Digitale Vernissage</h3>
+<p><img src="pics/Werner hochauflösend.jpg" width="40%" style="float:right; padding:0px" /></p>
+<p><font size="4"> <strong>Künstler: Werner Huber</strong> </font></p>
+<ul>
+<li>Leinwand</li>
+<li>70x50cm, ungerahmt</li>
+<li>Preis: 230 Euro</li>
+</ul>
+<p>„Die Zypressen beschäftigen mich dauernd, ich möchte so was Ähnliches<br />
+wie die Sonnenblumenbilder daraus machen, denn es wundert mich,<br />
+dass man sie noch nicht gemalt hat, wie ich sie sehe.<br />
+In den Linien und in den Proportionen sind sie schön wie ein<br />
+ägyptischer Obelisk. Und das Grün ist ein so ganz besonders feiner Ton.<br />
+Es ist der schwarze Fleck in einer sonnenbeschienenen Landschaft,<br />
+aber es ist einer der interessantesten schwarzen Töne,<br />
+doch ich kann mir keinen denken, der schwieriger zu treffen wäre.<br />
+Man muss die Zypressen hier gegen das Blau sehen,<br />
+in dem Blau, richtiger gesagt.“<br />
+- Vincent van Gogh</p>
+<p><br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/></p>
+<p><img src="pics/Horst hochauflösend.jpg" width="40%" style="float:right; padding:0px" /></p>
+<p><font size="4"> <strong>Künstler: Horst Hobinsi</strong> </font></p>
+<ul>
+<li>Acryl auf Malpapier</li>
+<li>70x50cm, ungerahmt</li>
+<li>Preis: 180 Euro</li>
+</ul>
+<p>“Ich male schon schon seit meiner Jugend gerne, aber<br />
+mir fehlte einfach die Zeit es intensiver zu<br />
+betreiben. Seit Sommer 2019 bin ich dem<br />
+Arbeitsleben entronnen und kann mich jetzt<br />
+endlich ganz der Malerei widmen. Im November<br />
+2019 besuchte ich einen Kurs zum Thema<br />
+”Wellen malen”. Dort habe ich mein Wissen<br />
+über Farblehre, Perspektiven und Vorgehensweisen<br />
+in der Acrylmalerei erweitern können.”</p>
+<p><br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/></p>
+<p><img src="pics/Suzanne hochauflösend.jpg" width="40%" style="float:right; padding:0px" /></p>
+<p><font size="4"> <strong>Künstlerin: Suzanne Beaujean-Adam</strong> </font></p>
+<ul>
+<li>Acryl, Kreide auf Papier</li>
+<li>23,5 x 20 cm</li>
+<li>Passepartout und Metallrahmen: 60x50cm</li>
+<li>Preis: 350 Euro</li>
+</ul>
+<p>“Malen und Zeichnen gilt für mich als<br />
+Verarbeitungsmöglichkeit von ERlebtem. Durch<br />
+das”Ausdrücken” im Bild findet ein innerer<br />
+Klärungsprozess statt. Im Mittelpunkt steht die<br />
+Begegnung mit dem “Anderen”. Die Darstelleung<br />
+des Körperlichen (des Seelischen im Körperlichen)<br />
+nimmt einen großen Raum ein<br />
+bis hin zu abstrakten Ausdrucksformen.”</p>
+<p><br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/></p>
+<p><img src="pics/Hilla.jpg" width="60%" style="float:right; padding:0px" /></p>
+<p><font size="4"> <strong>Künstlerin: Hilla Weidler</strong> </font></p>
+<ul>
+<li>Titel: Auf dem Weg<br />
+</li>
+<li>Aquarell<br />
+</li>
+<li>Mit 50x70cm Passepartout<br />
+</li>
+<li>Preis: 250 Euro</li>
+</ul>
+<p>“Malen und Zeichen war für mich seit<br />
+Kindesbeinen eine Beschäftigung, in die<br />
+ich ganz versinken kann und wenn am<br />
+Ende ein fertiges Bild vor mir liegt, bin ich<br />
+manchmal ganz verwundert …<br />
+Und in der Landschaft zu sitzen, wenn ich<br />
+male, ist für mich das Allerschönste.”</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
