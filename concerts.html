@@ -13,7 +13,7 @@
 
 <title>Konzertarchiv</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -63,6 +63,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -83,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -140,11 +144,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -173,8 +181,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -182,16 +190,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -308,7 +309,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -319,9 +320,6 @@ div.tocify {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="recent_concert.html">Virtuell 2022</a>
 </li>
 <li>
   <a href="concerts.html">Konzertarchiv</a>
@@ -349,77 +347,263 @@ div.tocify {
 </div>
 
 
-<p>Regelmäßige kammermusikalische Konzerte gibt es in Zewen bereits seit dem Jahreswechsel 2014/15. Seitdem können sich Kammermusikliebhaber regelmäßig auf Konzerte in verschiedenen Besetzungen freuen.</p>
+<p>Regelmäßige kammermusikalische Konzerte gibt es in Zewen bereits seit
+dem Jahreswechsel 2015/16. Seitdem können sich Kammermusikliebhaber
+regelmäßig auf Konzerte in verschiedenen Besetzungen freuen.</p>
 <p><br/></p>
-<div id="kammermusik-zum-neuen-jahr-2021---virtuell" class="section level4">
-<h4><strong>Kammermusik zum neuen Jahr 2021 - Virtuell</strong></h4>
-<p><a href="https://zewenerkk.github.io/docs/Programm_KZDJ_2021.pdf">Programm 2021 als PDF</a></p>
+<div id="kammermusik-zum-neuen-jahr-2022" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2022</strong></h4>
+<p><a
+href="https://zewenerkk.github.io/docs/Programm_21_22.pdf">Programm 2022
+als PDF</a></p>
+<iframe width="400" height="225" src="https://www.youtube.com/embed/JluWPYqUaWk" frameborder="0" allowfullscreen>
+</iframe>
+<p>Im Zentrum unseres heutigen Konzerts steht das erste Lied aus
+Schuberts Liederzyklus „Winterreise“ mit dem Titel “Gute Nacht”. Der
+Protagonist verabschiedet sich darin heimlich von seiner Liebsten, bei
+der er den Sommer verbracht hatte und bricht zu seiner Wanderschaft auf.
+Die Winterreise erfreute sich damals wie heute gleichermaßen großer
+Beliebtheit und auch die Adaptionspraxis für andere Besetzungen war
+besonders beliebt. So stammt die Umsetzung für Flöte und Klavier von dem
+berühmten Flötenvirtuosen Theobald Böhm. Wir wollen noch einen Schritt
+weiter gehen und kombinieren bildgebende Kunst und Musik: Die einzelnen
+Strophen werden begleitet von Gemälden von 4 regionalen Künstlern. Daher
+gilt ein besondere Dank Suzanne Beaujean-Adam, Hilla Weidler, Horst
+Binsel und Werner Huwer.</p>
+<p><br/></p>
+</div>
+<div id="kammermusik-zum-neuen-jahr-2021" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2021</strong></h4>
+<p><a
+href="https://zewenerkk.github.io/docs/Programm_KZDJ_2021.pdf">Programm
+2021 als PDF</a></p>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/AVQpFhn6aL4" frameborder="0" allowfullscreen>
 </iframe>
-<p>Zum Jahreswechsel 2020/21 sind der Vorstand und die musikalische Leitung der Zewener Kammerkonzerte neue Wege gegangen und haben keine Mühen gescheut, um ihrem Publikum trotz der bestehenden Corona-Beschränkungen ein außergewöhnliches Konzerterlebnis zum neuen Jahr zu bieten. Ebenso technisch aufwändig wie hochwertig wurde eine digitale Konzertversion produziert. Die Musiker kamen für die Aufzeichnung nicht zusammen, sondern nahmen ihre jeweiligen Stimmen getrennt auf und fügten diese schließlich zusammen.</p>
-<p>Im Mittelpunkt des diesjährigen Konzerts steht Joseph Haydn. Den schon zu Lebzeiten als Legende verehrten Komponisten führten zwei erfolgreiche Reisen nach London, wo einige seiner bedeutendsten Sinfonien entstanden und begeistert vom Publikum aufgenommen wurden. Nur wenigen Zeitgenossen wurde die Ehre zuteil, mit Erlaubnis des Komponisten dessen Werke arrangieren zu dürfen. Zu diesen zählte Johann Peter Salomon, der nicht nur als Geiger, sondern auch als Musikunternehmer große Erfolge in London feierte. Er war maßgeblich für Haydns Londonreisen verantwortlich und arrangierte die dort entstandenen Sinfonien für diese ungewöhnliche Besetzung. Womöglich tat er dies für den eigenen Bedarf oder auch zur Publikation, gehörte das Musizieren der aktuellen Hits in den Wohnzimmern und Salons von Adel und Bürgertum doch zum Zeitvertreib und guten Ton in der einsetzenden Biedermeierzeit. Wir hoffen, mit diesem Konzert in Zeiten von Corona und Quarantäne etwas von der Unbekümmertheit und verspielten Leichtigkeit dieser Musik in die Wohnzimmer des Publikums bringen zu können.</p>
+<p>Zum Jahreswechsel 2020/21 sind der Vorstand und die musikalische
+Leitung der Zewener Kammerkonzerte neue Wege gegangen und haben keine
+Mühen gescheut, um ihrem Publikum trotz der bestehenden
+Corona-Beschränkungen ein außergewöhnliches Konzerterlebnis zum neuen
+Jahr zu bieten. Ebenso technisch aufwändig wie hochwertig wurde eine
+digitale Konzertversion produziert. Die Musiker kamen für die
+Aufzeichnung nicht zusammen, sondern nahmen ihre jeweiligen Stimmen
+getrennt auf und fügten diese schließlich zusammen.</p>
+<p>Im Mittelpunkt des diesjährigen Konzerts steht Joseph Haydn. Den
+schon zu Lebzeiten als Legende verehrten Komponisten führten zwei
+erfolgreiche Reisen nach London, wo einige seiner bedeutendsten
+Sinfonien entstanden und begeistert vom Publikum aufgenommen wurden. Nur
+wenigen Zeitgenossen wurde die Ehre zuteil, mit Erlaubnis des
+Komponisten dessen Werke arrangieren zu dürfen. Zu diesen zählte Johann
+Peter Salomon, der nicht nur als Geiger, sondern auch als
+Musikunternehmer große Erfolge in London feierte. Er war maßgeblich für
+Haydns Londonreisen verantwortlich und arrangierte die dort entstandenen
+Sinfonien für diese ungewöhnliche Besetzung. Womöglich tat er dies für
+den eigenen Bedarf oder auch zur Publikation, gehörte das Musizieren der
+aktuellen Hits in den Wohnzimmern und Salons von Adel und Bürgertum doch
+zum Zeitvertreib und guten Ton in der einsetzenden Biedermeierzeit. Wir
+hoffen, mit diesem Konzert in Zeiten von Corona und Quarantäne etwas von
+der Unbekümmertheit und verspielten Leichtigkeit dieser Musik in die
+Wohnzimmer des Publikums bringen zu können.</p>
 <p><br/></p>
 </div>
 <div id="musikalische-expedition-2020" class="section level4">
 <h4><strong>Musikalische Expedition 2020</strong></h4>
 <p>Musikalische Expedition digital – Musik in Zeiten von Corona<br />
-<a href="http://grundschule-zewen.de/?p=5531">Link zur Veranstaltung auf Website der Grundschule Trier-Zewen</a></p>
+<a href="http://grundschule-zewen.de/?p=5531">Link zur Veranstaltung auf
+Website der Grundschule Trier-Zewen</a></p>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/0YPaTeP8Oj4" frameborder="0" allowfullscreen>
 </iframe>
-<p>Für Juni 2020 hatte unser Verein gemeinsam mit der Grundschule Trier-Zewen eine „Musikalische Expedition“ geplant. Die Schulkinder der örtlichen Grundschule sollten dabei, in direktem Kontakt mit professionellen Musizierenden, einen besonderen Einblick in die Welt der Musik erhalten.</p>
-<p>Leider muss neben der „Musikalischen Lesung“ nun auch diese „Musikalische Expedition“ aufgrund der aktuellen Corona-Krise auf nächstes Jahr verschoben werden. Als kleines Trostpflaster und um die Wartezeit zu verkürzen, haben Carolina Hernández und Stephan Kröger vom juval musikensemble im Namen unseres Vereins sowie des Musikvereins Trier-Zewen einen digitalen musikalischen Gruß für die Grundschulklassen aufgenommen. Es sind aber natürlich auch alle anderen Interessierten jeden Alters herzlich eingeladen, sich der Musikalischen Expedition digital anzuschließen - in der Welt der Musik gibt es viel zu entdecken.</p>
+<p>Für Juni 2020 hatte unser Verein gemeinsam mit der Grundschule
+Trier-Zewen eine „Musikalische Expedition“ geplant. Die Schulkinder der
+örtlichen Grundschule sollten dabei, in direktem Kontakt mit
+professionellen Musizierenden, einen besonderen Einblick in die Welt der
+Musik erhalten.</p>
+<p>Leider muss neben der „Musikalischen Lesung“ nun auch diese
+„Musikalische Expedition“ aufgrund der aktuellen Corona-Krise auf
+nächstes Jahr verschoben werden. Als kleines Trostpflaster und um die
+Wartezeit zu verkürzen, haben Carolina Hernández und Stephan Kröger vom
+juval musikensemble im Namen unseres Vereins sowie des Musikvereins
+Trier-Zewen einen digitalen musikalischen Gruß für die Grundschulklassen
+aufgenommen. Es sind aber natürlich auch alle anderen Interessierten
+jeden Alters herzlich eingeladen, sich der Musikalischen Expedition
+digital anzuschließen - in der Welt der Musik gibt es viel zu
+entdecken.</p>
 <p><br/></p>
 </div>
-<div id="kammermusik-zwischen-den-jahren-1920" class="section level4">
-<h4><strong>Kammermusik zwischen den Jahren 19/20</strong></h4>
-<p><a href="https://zewenerkk.github.io/docs/Programm_19_20.pdf">Programm 19/20 als PDF</a></p>
+<div id="kammermusik-zum-neuen-jahr-2020" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2020</strong></h4>
+<p><a
+href="https://zewenerkk.github.io/docs/Programm_19_20.pdf">Programm 2020
+als PDF</a></p>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/5DcfRHCuCDk" frameborder="0" allowfullscreen>
 </iframe>
-<p>2020 war das Konzert zum neuen Jahr ganz Gioachino Rossini und seiner Zeit gewidmet (auch wenn der Komponist, trotz scherzhafter Ankündigung auf dem Konzertplakat, leider aus Altersgründen nicht mehr aktiv an der Veranstaltung teilnehmen konnte).</p>
-<p>Wer an Rossini denkt, denkt an Italien und die italienische Oper. Tatsächlich waren allerdings die meisten Komponisten des Abends überwiegend in Paris, dem kulturellen Zentrum der damaligen Zeit, tätig.</p>
-<p>Von Rossini sind sechs Sonaten für Flöte und Streichtrio überliefert - eine Gattung, die sich seiner Zeit großer Beliebtheit erfreute. Das reine Bläserensemble des Konzertabends konnte daher von Glück sagen, dass schon ein Zeitgenosse Rossinis diese Quartette für die Besetzung Flöte, Klarinette, Horn und Fagott arrangiert hatte.</p>
-<p>Zu Rossini gäbe es viel zu berichten, so soll Ludwig van Beethoven, über einige seiner ernsten Opern gesagt haben: “sehen Sie, das Ernste liegt den Italienern nun einmal nicht [und außerdem] fehlt es Ihnen, um das wahre Drama zu behandeln, an musikalischen Kenntnissen” Man bedenke: zu einem Komponisten, der wie kaum ein anderer schon zu Lebzeiten als Legende galt.</p>
-<p>Über das Leben von Vincenzo Gambaro, einem Zeitgenossen und Landsmann Rossinis ist wenig bekannt, außer, dass er ein hervorragender Klarinettist gewesen sein soll. Darüber hinaus legen seine Quartette nahe, dass auch seine Mitspieler ebenso exzellente Instrumentalisten gewesen sein müssen. Seinen Lebensunterhalt bestritt er wohl auf vielfältige Weise, unter anderem unterhielt die Familie einen Instrumentenladen in Paris.</p>
-<p>Wie die beiden Italiener war auch Emanuel Jadin zur selben Zeit in Versailles und Paris tätig, wenn auch sein Stil etwas ambivalent zwischen Barock und Klassizismus pendelt. Wie Rossini war er Dozent am Pariser Konservatorium. Darüber hinaus weiß man wenig über den Komponisten Jadin, außer, dass er sich für die damals einsetzende Blasorchestermode engagierte.</p>
-<p>Als Kompositionsprofessor am Pariser Konservatorium zählte Rossini Eugen Walckiers zu seinen Schülern. Der heute unbekannte Komponist hinterließ ein umfangreichen Oeuvre - insbesondere für die Flöte. Da seine Werke leider fast gänzlich in Vergessenheit geraten sind, ist der hier zu hörende Ausschnitt des Quartetts eine der wenigen Aufnahmen seiner Werke, die überhaupt zurzeit existieren.</p>
-<p>Zu Beginn und am Schluss des Videos sind Ausschnitte aus der Sonate Nr. 2 G-Dur von Gioacchino Rossini zu hören.</p>
+<p>2020 war das Konzert zum neuen Jahr ganz Gioachino Rossini und seiner
+Zeit gewidmet (auch wenn der Komponist, trotz scherzhafter Ankündigung
+auf dem Konzertplakat, leider aus Altersgründen nicht mehr aktiv an der
+Veranstaltung teilnehmen konnte).</p>
+<p>Wer an Rossini denkt, denkt an Italien und die italienische Oper.
+Tatsächlich waren allerdings die meisten Komponisten des Abends
+überwiegend in Paris, dem kulturellen Zentrum der damaligen Zeit,
+tätig.</p>
+<p>Von Rossini sind sechs Sonaten für Flöte und Streichtrio überliefert
+- eine Gattung, die sich seiner Zeit großer Beliebtheit erfreute. Das
+reine Bläserensemble des Konzertabends konnte daher von Glück sagen,
+dass schon ein Zeitgenosse Rossinis diese Quartette für die Besetzung
+Flöte, Klarinette, Horn und Fagott arrangiert hatte.</p>
+<p>Zu Rossini gäbe es viel zu berichten, so soll Ludwig van Beethoven,
+über einige seiner ernsten Opern gesagt haben: “sehen Sie, das Ernste
+liegt den Italienern nun einmal nicht [und außerdem] fehlt es Ihnen, um
+das wahre Drama zu behandeln, an musikalischen Kenntnissen” Man bedenke:
+zu einem Komponisten, der wie kaum ein anderer schon zu Lebzeiten als
+Legende galt.</p>
+<p>Über das Leben von Vincenzo Gambaro, einem Zeitgenossen und Landsmann
+Rossinis ist wenig bekannt, außer, dass er ein hervorragender
+Klarinettist gewesen sein soll. Darüber hinaus legen seine Quartette
+nahe, dass auch seine Mitspieler ebenso exzellente Instrumentalisten
+gewesen sein müssen. Seinen Lebensunterhalt bestritt er wohl auf
+vielfältige Weise, unter anderem unterhielt die Familie einen
+Instrumentenladen in Paris.</p>
+<p>Wie die beiden Italiener war auch Emanuel Jadin zur selben Zeit in
+Versailles und Paris tätig, wenn auch sein Stil etwas ambivalent
+zwischen Barock und Klassizismus pendelt. Wie Rossini war er Dozent am
+Pariser Konservatorium. Darüber hinaus weiß man wenig über den
+Komponisten Jadin, außer, dass er sich für die damals einsetzende
+Blasorchestermode engagierte.</p>
+<p>Als Kompositionsprofessor am Pariser Konservatorium zählte Rossini
+Eugen Walckiers zu seinen Schülern. Der heute unbekannte Komponist
+hinterließ ein umfangreichen Oeuvre - insbesondere für die Flöte. Da
+seine Werke leider fast gänzlich in Vergessenheit geraten sind, ist der
+hier zu hörende Ausschnitt des Quartetts eine der wenigen Aufnahmen
+seiner Werke, die überhaupt zurzeit existieren.</p>
+<p>Zu Beginn und am Schluss des Videos sind Ausschnitte aus der Sonate
+Nr. 2 G-Dur von Gioacchino Rossini zu hören.</p>
 <p><br/></p>
 </div>
-<div id="kammermusik-zwischen-den-jahren-1819" class="section level4">
-<h4><strong>Kammermusik zwischen den Jahren 18/19</strong></h4>
-<p><a href="https://zewenerkk.github.io/docs/Programm_18_19.pdf">Programm 18/19 als PDF</a></p>
+<div id="kammermusik-zum-neuen-jahr-2019" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2019</strong></h4>
+<p><a
+href="https://zewenerkk.github.io/docs/Programm_18_19.pdf">Programm 2019
+als PDF</a></p>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/v5AKj52mwqQ" frameborder="0" allowfullscreen>
 </iframe>
-<p>Anlässlich des festlichen Konzerts zur Vereinsgründung des Zewener Kammermusik e.V. am 4. Januar 2019 präsentierten die Mitglieder des juval-musikensembles in unterschiedlichen Formationen als Barockorchester Bachs brandenburgisches Konzert Nr. 5 sowie seine h-Moll-Suite. Zwei Solokonzerte von Telemann und Vivaldi für Horn und Cello komplettierten das bunte Spektrum der Barockmusik, das an diesem Abend zur Aufführung kam.</p>
-<p>Bach stellt in seinem Kompositionszyklus der brandenburgischen Konzerte in jedem der 6 Konzerte eine andere Solistengruppe dem Tutti gegenüber. Wohl für eine Reise seines Kurfürsten geschrieben, auf der Bach nur sechs Musiker zur Verfügung gehabt haben soll, besteht im Fall des Konzerts mit der Nr. 5 die Solistengruppe aus einem konzertierenden Trio aus Flöte, Sologeige und Cembalo. Aus der beschränkten Musikerzahl resultiert, dass von Bach nur eine Tuttigeige vorgesehen ist, was wiederum nach Meinung der Musiker die Legitimation dafür darstellt, diese Musik einfach besetzt spielen zu dürfen.</p>
-<p>Georg Friedrich Telemann war ein lange Zeit unterschätzter Komponist, dessen Werk erst in den letzten drei Jahrzehnten wiederentdeckt wurde. Zur Geltung gekommen ist sein kompositorisches Vermögen letztlich auch durch die Tatsache, dass Werke die lange Zeit Bachs Schaffen zugeordnet wurden, nach heutigem Kenntnisstand tatsächlich von Telemann stammen.</p>
-<p>Zu Vivaldis Zeit war das Cello eigentlich noch ein reines Bassinstrument und fest in der Continuogruppe verankert. Erstaunlicher Weise gibt es allerdings gerade von Vivaldi eine Vielzahl von Cellokonzerten, die das Instrument aus dieser Funktion herauslösen. Eigentlich Priester und dennoch zusätzlich einer der schillerndsten Komponisten seiner Zeit, war er außerdem ein gewiefter Geschäftsmann - fast schon ein barocker Popstar. Und natürlich wusste Vivaldi genau um die Beliebtheit seiner Werke in ganz Europe - insbesondere auch in den deutschen Fürstentümern - und verkaufte seine Konzerte oft zu überhören Preisen und mit zweifelhaften Exklusivrechten an die zahlungskräftigen fürstlichen Musikliebhaber.</p>
-<p>Im Bachschen brandenburgischen Konzert hatte das Cembalo im Laufe des Werks noch nach und nach das Solistenensemble dominiert. Was auch daran liegen mag, dass Bach auf erwähnter Reise den Cembalopart selbst spielte und der Flötenpart wohl von einem Musiker gespielt wurde, dessen Hauptinstrument eigentlich ein andres war. Die h-Moll Suite entstand hingegen zu Bachs Zeit am Hof in Köthen, wo er einen exzellenten Flötisten zur Verfügung gehabt haben muss. Denn auch eine Sonate sowie eine Solosuite für Flöte, die zur selben Zeit entstand gehört zu dem Virtuosestem, was die barocke Flötenliteratur zu bieten hat.</p>
-<p>Zu Beginn und am Schluss des Videos sind Auszüge aus Marin Marais Variationen der Folies d`Espagne zu hören, die von den Musikern eigens für diese Besetzung im Stil der Zeit eingerichtet wurden.</p>
+<p>Anlässlich des festlichen Konzerts zur Vereinsgründung des Zewener
+Kammermusik e.V. am 4. Januar 2019 präsentierten die Mitglieder des
+juval-musikensembles in unterschiedlichen Formationen als
+Barockorchester Bachs brandenburgisches Konzert Nr. 5 sowie seine
+h-Moll-Suite. Zwei Solokonzerte von Telemann und Vivaldi für Horn und
+Cello komplettierten das bunte Spektrum der Barockmusik, das an diesem
+Abend zur Aufführung kam.</p>
+<p>Bach stellt in seinem Kompositionszyklus der brandenburgischen
+Konzerte in jedem der 6 Konzerte eine andere Solistengruppe dem Tutti
+gegenüber. Wohl für eine Reise seines Kurfürsten geschrieben, auf der
+Bach nur sechs Musiker zur Verfügung gehabt haben soll, besteht im Fall
+des Konzerts mit der Nr. 5 die Solistengruppe aus einem konzertierenden
+Trio aus Flöte, Sologeige und Cembalo. Aus der beschränkten Musikerzahl
+resultiert, dass von Bach nur eine Tuttigeige vorgesehen ist, was
+wiederum nach Meinung der Musiker die Legitimation dafür darstellt,
+diese Musik einfach besetzt spielen zu dürfen.</p>
+<p>Georg Friedrich Telemann war ein lange Zeit unterschätzter Komponist,
+dessen Werk erst in den letzten drei Jahrzehnten wiederentdeckt wurde.
+Zur Geltung gekommen ist sein kompositorisches Vermögen letztlich auch
+durch die Tatsache, dass Werke die lange Zeit Bachs Schaffen zugeordnet
+wurden, nach heutigem Kenntnisstand tatsächlich von Telemann
+stammen.</p>
+<p>Zu Vivaldis Zeit war das Cello eigentlich noch ein reines
+Bassinstrument und fest in der Continuogruppe verankert. Erstaunlicher
+Weise gibt es allerdings gerade von Vivaldi eine Vielzahl von
+Cellokonzerten, die das Instrument aus dieser Funktion herauslösen.
+Eigentlich Priester und dennoch zusätzlich einer der schillerndsten
+Komponisten seiner Zeit, war er außerdem ein gewiefter Geschäftsmann -
+fast schon ein barocker Popstar. Und natürlich wusste Vivaldi genau um
+die Beliebtheit seiner Werke in ganz Europe - insbesondere auch in den
+deutschen Fürstentümern - und verkaufte seine Konzerte oft zu überhören
+Preisen und mit zweifelhaften Exklusivrechten an die zahlungskräftigen
+fürstlichen Musikliebhaber.</p>
+<p>Im Bachschen brandenburgischen Konzert hatte das Cembalo im Laufe des
+Werks noch nach und nach das Solistenensemble dominiert. Was auch daran
+liegen mag, dass Bach auf erwähnter Reise den Cembalopart selbst spielte
+und der Flötenpart wohl von einem Musiker gespielt wurde, dessen
+Hauptinstrument eigentlich ein andres war. Die h-Moll Suite entstand
+hingegen zu Bachs Zeit am Hof in Köthen, wo er einen exzellenten
+Flötisten zur Verfügung gehabt haben muss. Denn auch eine Sonate sowie
+eine Solosuite für Flöte, die zur selben Zeit entstand gehört zu dem
+Virtuosestem, was die barocke Flötenliteratur zu bieten hat.</p>
+<p>Zu Beginn und am Schluss des Videos sind Auszüge aus Marin Marais
+Variationen der Folies d`Espagne zu hören, die von den Musikern eigens
+für diese Besetzung im Stil der Zeit eingerichtet wurden.</p>
 <p><br/></p>
 </div>
-<div id="kammermusik-zwischen-den-jahren-1718" class="section level4">
-<h4><strong>Kammermusik zwischen den Jahren 17/18</strong></h4>
+<div id="kammermusik-zum-neuen-jahr-2018" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2018</strong></h4>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/V72z8H5nKJM" frameborder="0" allowfullscreen>
 </iframe>
-<p>Der Jahreswechsel bescherte den Kammermusikliebhabern in diesem Jahr das ungewöhnliche Ensemble aus Streichtrio und solistischem Horn. Der musikalische Abend widmete sich dieses Mal der Zeit des Rokoko.</p>
-<p>Das im Video vom juval-musikensemble aufgeführte Quartett ist mit Anonymus überschrieben, kann aber wahrscheinlich einem der beiden Komponistenbrüder Graun zugeordnet werden, die am Dresdner Hof tätig waren. Beide verkörpern den spätbarocken Stil.</p>
-<p>Im Folgenden waren drei Trios von Josef Haydn zu hören, die wohl zum Hausgebrauch am Hof in Esterhazy in Ungarn entstanden sind, wo der Komponist als Kapellmeister ein besserer Angestellter war, der neben Komponieren auch das Orchester leiten musste und seine Kammermusikwerke selbst aufführte. Gut möglich, dass er eines der folgenden Trios sogar mit seinem Herren, dem Grafen Esterhazy zu dessen Unterhaltung spielte.</p>
-<p>Den Abschluss des Konzerts bildete das Quartett für Horn, Violine, Viola und Cello von Friedrich Witt. Witt zählte Haydn zu seinen großen Vorbildern und auch wenn seine Musik nicht zu der Vollkommenheit seines Zeitgenossen Mozart gelangte, so kann man ihr eine Fülle charmanter musikalischer Ideen sicherlich nicht absprechen.</p>
+<p>Der Jahreswechsel bescherte den Kammermusikliebhabern in diesem Jahr
+das ungewöhnliche Ensemble aus Streichtrio und solistischem Horn. Der
+musikalische Abend widmete sich dieses Mal der Zeit des Rokoko.</p>
+<p>Das im Video vom juval-musikensemble aufgeführte Quartett ist mit
+Anonymus überschrieben, kann aber wahrscheinlich einem der beiden
+Komponistenbrüder Graun zugeordnet werden, die am Dresdner Hof tätig
+waren. Beide verkörpern den spätbarocken Stil.</p>
+<p>Im Folgenden waren drei Trios von Josef Haydn zu hören, die wohl zum
+Hausgebrauch am Hof in Esterhazy in Ungarn entstanden sind, wo der
+Komponist als Kapellmeister ein besserer Angestellter war, der neben
+Komponieren auch das Orchester leiten musste und seine Kammermusikwerke
+selbst aufführte. Gut möglich, dass er eines der folgenden Trios sogar
+mit seinem Herren, dem Grafen Esterhazy zu dessen Unterhaltung
+spielte.</p>
+<p>Den Abschluss des Konzerts bildete das Quartett für Horn, Violine,
+Viola und Cello von Friedrich Witt. Witt zählte Haydn zu seinen großen
+Vorbildern und auch wenn seine Musik nicht zu der Vollkommenheit seines
+Zeitgenossen Mozart gelangte, so kann man ihr eine Fülle charmanter
+musikalischer Ideen sicherlich nicht absprechen.</p>
 <p><br/></p>
 </div>
-<div id="kammermusik-zwischen-den-jahren-1617" class="section level4">
-<h4><strong>Kammermusik zwischen den Jahren 16/17</strong></h4>
+<div id="kammermusik-zum-neuen-jahr-2017" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2017</strong></h4>
 <iframe width="400" height="225" src="https://www.youtube.com/embed/iiqDGOE0MbE" frameborder="0" allowfullscreen>
 </iframe>
-<p>Am Neujahrstag stand zum ersten Mal ein Flügel im Saal des Pfarrheims St. Martinus Trier-Zewen. Erneut eine logistische Meisterleistung, die nur dank vieler helfender Hände aus dem Freundes- und Bekanntenkreis möglich war. Das Programm des Abends entführte mit zwei französischen Klaviertrios in das Paris des ausgehenden 19. Jahrhunderts. In Debussys frühem Klaviertrio findet man noch wenig vom späteren Impressionisten und die Schwächen und Unbeholfenheiten dieses Jugendwerks sind nicht zu leugnen. Dass es dennoch einen Platz in diesem Kammermusikprogramm bekam, verdankt das Stück dem besonderen Charme des Fin de Siecle, der ihm zweifelsohne innewohnt.</p>
-<p>Anders als Claude Debussy war Camille Saint-Saëns bei der Komposition seines ersten Klaviertrios bereits ein arrivierter Komponist, der sich eigentlich nichts mehr beweisen musste. Dennoch stellt dieses Werk in gewisser Weise einen erneuten trotzigen Rückzug in eine etwas privatere Gattung dar. Kammermusik war bis dahin immer eine Auseinandersetzung mit dem übermächtigen Erbe Beethovens, was oft in plumpen Nachahmungen des Genies der Wiener Klassik endete. Saint-Saëns schafft es mit schlichtem motivisch thematischem Material und ohne harmonische Extravaganzen ein französisches Pendant zum bis dahin nur in Deutschland boomenden Klaviertrio zu erschaffen.</p>
-<p>Im Video hören Sie einen Ausschnitt aus dem vierten Satz des Trios von Debussy. Bei der Besetzung mit Flöte, Horn und Klavier handelt es sich nicht um die Originalbesetzung, sondern um eine eigens von den vortragenden Musikern für diese Besetzung angefertigte Übertragung. Es wird berichtet, Debussy habe sein Trio in einem Anflug jugendlicher Liebschaft zur Tochter des Hauses geschrieben, was die Musiker annehmen lässt, wie sie dem Publikum erzählten, dass er sein Trio für Flöte anstelle der Geige geschrieben hätte, wäre die Angebetete Flötistin gewesen.</p>
+<p>Am Neujahrstag stand zum ersten Mal ein Flügel im Saal des Pfarrheims
+St. Martinus Trier-Zewen. Erneut eine logistische Meisterleistung, die
+nur dank vieler helfender Hände aus dem Freundes- und Bekanntenkreis
+möglich war. Das Programm des Abends entführte mit zwei französischen
+Klaviertrios in das Paris des ausgehenden 19. Jahrhunderts. In Debussys
+frühem Klaviertrio findet man noch wenig vom späteren Impressionisten
+und die Schwächen und Unbeholfenheiten dieses Jugendwerks sind nicht zu
+leugnen. Dass es dennoch einen Platz in diesem Kammermusikprogramm
+bekam, verdankt das Stück dem besonderen Charme des Fin de Siecle, der
+ihm zweifelsohne innewohnt.</p>
+<p>Anders als Claude Debussy war Camille Saint-Saëns bei der Komposition
+seines ersten Klaviertrios bereits ein arrivierter Komponist, der sich
+eigentlich nichts mehr beweisen musste. Dennoch stellt dieses Werk in
+gewisser Weise einen erneuten trotzigen Rückzug in eine etwas privatere
+Gattung dar. Kammermusik war bis dahin immer eine Auseinandersetzung mit
+dem übermächtigen Erbe Beethovens, was oft in plumpen Nachahmungen des
+Genies der Wiener Klassik endete. Saint-Saëns schafft es mit schlichtem
+motivisch thematischem Material und ohne harmonische Extravaganzen ein
+französisches Pendant zum bis dahin nur in Deutschland boomenden
+Klaviertrio zu erschaffen.</p>
+<p>Im Video hören Sie einen Ausschnitt aus dem vierten Satz des Trios
+von Debussy. Bei der Besetzung mit Flöte, Horn und Klavier handelt es
+sich nicht um die Originalbesetzung, sondern um eine eigens von den
+vortragenden Musikern für diese Besetzung angefertigte Übertragung. Es
+wird berichtet, Debussy habe sein Trio in einem Anflug jugendlicher
+Liebschaft zur Tochter des Hauses geschrieben, was die Musiker annehmen
+lässt, wie sie dem Publikum erzählten, dass er sein Trio für Flöte
+anstelle der Geige geschrieben hätte, wäre die Angebetete Flötistin
+gewesen.</p>
 <p><br/></p>
 </div>
-<div id="kammermusik-zwischen-den-jahren-1516" class="section level4">
-<h4><strong>Kammermusik zwischen den Jahren 15/16</strong></h4>
-<p>Weihnachten 2015 konnte das Publikum im Zewener Pfarrheim zum ersten Mal einem barocken kammermusikalischen Programm des juval-musikensembles lauschen. Ermöglicht wurde dies unter anderem durch die tatkräftige Unterstützung von Freunden und Förderern, da extra ein Cembalo für das Konzert organisiert und transportiert werden musste. Neben den Kompositionsgrößen Johann Sebastian Bach und Georg Friedrich Telemann kamen an diesem Abend auch weniger bekannte Werke von Johann Gottlieb Braun und Johannes Bodinus zur Aufführung. Dem Ensemble ist es ein großes Anliegen, neben dem populären und etablierten Kammermusikrepertoire auch eigene Entdeckungen aufzuführen.</p>
+<div id="kammermusik-zum-neuen-jahr-2016" class="section level4">
+<h4><strong>Kammermusik zum neuen Jahr 2016</strong></h4>
+<p>Weihnachten 2015 konnte das Publikum im Zewener Pfarrheim zum ersten
+Mal einem barocken kammermusikalischen Programm des juval-musikensembles
+lauschen. Ermöglicht wurde dies unter anderem durch die tatkräftige
+Unterstützung von Freunden und Förderern, da extra ein Cembalo für das
+Konzert organisiert und transportiert werden musste. Neben den
+Kompositionsgrößen Johann Sebastian Bach und Georg Friedrich Telemann
+kamen an diesem Abend auch weniger bekannte Werke von Johann Gottlieb
+Braun und Johannes Bodinus zur Aufführung. Dem Ensemble ist es ein
+großes Anliegen, neben dem populären und etablierten
+Kammermusikrepertoire auch eigene Entdeckungen aufzuführen.</p>
 </div>
 
 
